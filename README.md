@@ -42,11 +42,11 @@ Untuk pengujian awal, Anda bisa mematikan firewall sementara, lalu cek apakah cl
 # Tabel Students: Menyimpan informasi dasar tentang siswa.
 
 Fields:
-student_id (Primary Key): ID unik untuk setiap siswa.
-name: Nama siswa.
-class: Kelas siswa.
-contact: Informasi kontak siswa (misalnya nomor telepon atau email).
-birth_date: Tanggal lahir siswa.
+a) student_id (Primary Key): ID unik untuk setiap siswa.
+b) name: Nama siswa.
+c) class: Kelas siswa.
+d) contact: Informasi kontak siswa (misalnya nomor telepon atau email).
+e) birth_date: Tanggal lahir siswa.
 
 # Tabel Activities: Menyimpan informasi tentang kegiatan ekstrakurikuler.
 
