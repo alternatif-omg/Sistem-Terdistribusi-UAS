@@ -27,9 +27,6 @@ Cari alamat IPv4 Address dari adapter jaringan yang terhubung ke hotspot ponsel.
 
 6. Mengakses Server dari Laptop Client
 Di laptop client, buka aplikasi client Anda dan gunakan IP server yang ditemukan di langkah sebelumnya.
-Contohnya, jika server berjalan di port 5000, maka Anda dapat mengakses endpoint seperti:
-http://192.168.43.10:5000/api/registrations
-Dengan cara ini, client akan bisa mengakses REST API di server melalui IP tersebut.
 
 7. Catatan Firewall (Jika Diperlukan)
 Jika laptop client mengalami masalah akses ke server, periksa pengaturan firewall di laptop server untuk memastikan port yang digunakan (misalnya 5000) tidak diblokir.
