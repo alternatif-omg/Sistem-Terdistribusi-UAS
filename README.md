@@ -108,3 +108,16 @@ Relasi one-to-many (satu ke banyak), karena satu siswa dapat memiliki banyak cat
 # Relasi Activities ke Attendance: 
 Relasi one-to-many (satu ke banyak), karena satu kegiatan dapat memiliki banyak catatan kehadiran dari siswa yang berbeda. Kolom activity_id di tabel Attendance adalah Foreign Key yang menghubungkan setiap catatan kehadiran dengan kegiatan di tabel Activities.
 
+# Laptop Server (Backend)
+
+Menyiapkan Server PHP - Jalankan XAMPP/WAMP untuk server.php dan Database.php.
+Endpoint RESTful di server.php - Buat API CRUD untuk operasi siswa, kegiatan, pendaftaran, dan kehadiran.
+Koneksi Database di Database.php - Buat fungsi CRUD dan relasi tabel di phpMyAdmin.
+Konfigurasi Jaringan - Atur IP server dan pastikan akses client.
+
+# Laptop Client (Frontend)
+
+Antarmuka di index.php - Buat form HTML untuk pendaftaran dan jadwal.
+Proses Data di proses.php - Teruskan input pengguna ke server via Client.php.
+Client.php untuk Permintaan ke Server - Gunakan cURL untuk mengirim data ke server.
+Pengujian dan Tampilkan Data - Tampilkan hasil respons dari server di halaman client.
