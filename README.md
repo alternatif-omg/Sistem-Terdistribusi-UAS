@@ -1,6 +1,6 @@
 # Sistem-Terdistribusi-UAS
 
-# Hubungkan dua Laptop Melalui Wifi
+## Hubungkan dua Laptop Melalui Wifi
 
 Jika Anda ingin menghubungkan dua laptop menggunakan hotspot dari ponsel, caranya cukup sederhana. Berikut adalah langkah-langkah untuk menghubungkannya:
 
@@ -20,8 +20,8 @@ Di laptop server, jalankan backend aplikasi.
 Di laptop yang berperan sebagai server, buka Command Prompt atau Terminal dan ketik:
 bash
 Copy code
-# Windows
-ipconfig
+## Windows
+`ipconfig`
 
 Cari alamat IPv4 Address dari adapter jaringan yang terhubung ke hotspot ponsel. Misalnya, IP yang muncul bisa berupa 192.168.43.10 (alamat ini mungkin bervariasi tergantung pada ponsel dan jaringan).
 
@@ -35,11 +35,11 @@ Dengan cara ini, client akan bisa mengakses REST API di server melalui IP terseb
 Jika laptop client mengalami masalah akses ke server, periksa pengaturan firewall di laptop server untuk memastikan port yang digunakan (misalnya 5000) tidak diblokir.
 Untuk pengujian awal, Anda bisa mematikan firewall sementara, lalu cek apakah client bisa terhubung ke server.
 
-# Struktur Database
+## Struktur Database
 ![Untitled Diagram drawio (8)](https://github.com/user-attachments/assets/02c1537e-b1db-4ff1-a220-5dca4a35ec69)
 
-# Struktur Tabel
-# Tabel Students: Menyimpan informasi dasar tentang siswa.
+## Struktur Tabel
+### Tabel Students: Menyimpan informasi dasar tentang siswa.
 
 Fields:
 
@@ -53,7 +53,7 @@ contact: Informasi kontak siswa (misalnya nomor telepon atau email).
 
 birth_date: Tanggal lahir siswa.
 
-# Tabel Activities: Menyimpan informasi tentang kegiatan ekstrakurikuler.
+### Tabel Activities: Menyimpan informasi tentang kegiatan ekstrakurikuler.
 
 Fields:
 
@@ -67,7 +67,7 @@ schedule: Jadwal kegiatan (misalnya hari atau waktu).
 
 instructor: Nama instruktur atau pembimbing kegiatan.
 
-# Tabel Registrations: Menyimpan data pendaftaran siswa ke kegiatan ekstrakurikuler.
+### Tabel Registrations: Menyimpan data pendaftaran siswa ke kegiatan ekstrakurikuler.
 
 Fields:
 
@@ -81,7 +81,7 @@ registration_date: Tanggal pendaftaran siswa ke kegiatan.
 
 status: Status pendaftaran (misalnya "aktif" atau "non-aktif").
 
-# Tabel Attendance: Menyimpan catatan kehadiran siswa pada kegiatan ekstrakurikuler.
+### Tabel Attendance: Menyimpan catatan kehadiran siswa pada kegiatan ekstrakurikuler.
 
 Fields:
 
@@ -95,27 +95,27 @@ attendance_date: Tanggal kehadiran siswa pada kegiatan.
 
 status: Status kehadiran (misalnya "hadir" atau "tidak hadir").
 
-# Relasi Antar Tabel
-# Relasi Students ke Registrations: 
+## Relasi Antar Tabel
+### Relasi Students ke Registrations: 
 Relasi one-to-many (satu ke banyak), karena satu siswa dapat mendaftar ke banyak kegiatan. Kolom student_id di tabel Registrations adalah Foreign Key yang menghubungkan setiap pendaftaran dengan siswa tertentu di tabel Students.
 
-# Relasi Activities ke Registrations: 
+### Relasi Activities ke Registrations: 
 Relasi one-to-many (satu ke banyak), karena satu kegiatan dapat memiliki banyak siswa yang mendaftar. Kolom activity_id di tabel Registrations adalah Foreign Key yang menghubungkan setiap pendaftaran dengan kegiatan tertentu di tabel Activities.
 
-# Relasi Students ke Attendance: 
+### Relasi Students ke Attendance: 
 Relasi one-to-many (satu ke banyak), karena satu siswa dapat memiliki banyak catatan kehadiran pada kegiatan yang berbeda. Kolom student_id di tabel Attendance adalah Foreign Key yang menghubungkan setiap catatan kehadiran dengan siswa di tabel Students.
 
-# Relasi Activities ke Attendance: 
+### Relasi Activities ke Attendance: 
 Relasi one-to-many (satu ke banyak), karena satu kegiatan dapat memiliki banyak catatan kehadiran dari siswa yang berbeda. Kolom activity_id di tabel Attendance adalah Foreign Key yang menghubungkan setiap catatan kehadiran dengan kegiatan di tabel Activities.
 
-# Laptop Server (Backend)
+## Laptop Server (Backend)
 
 Menyiapkan Server PHP - Jalankan XAMPP/WAMP untuk server.php dan Database.php.
 Endpoint RESTful di server.php - Buat API CRUD untuk operasi siswa, kegiatan, pendaftaran, dan kehadiran.
 Koneksi Database di Database.php - Buat fungsi CRUD dan relasi tabel di phpMyAdmin.
 Konfigurasi Jaringan - Atur IP server dan pastikan akses client.
 
-# Laptop Client (Frontend)
+## Laptop Client (Frontend)
 
 Antarmuka di index.php - Buat form HTML untuk pendaftaran dan jadwal.
 Proses Data di proses.php - Teruskan input pengguna ke server via Client.php.
