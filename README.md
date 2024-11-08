@@ -14,7 +14,7 @@ Setelah terhubung, kedua laptop kini berada dalam jaringan yang sama, yang memun
 Pilih salah satu laptop sebagai server dan yang lainnya sebagai client.
 Server akan menjalankan aplikasi backend atau API yang akan menyediakan data bagi client.
 4. Menjalankan Server di Laptop Server
-Di laptop server, jalankan backend aplikasi Anda (misalnya, Flask, Django, atau Node.js).
+Di laptop server, jalankan backend aplikasi.
 
 5. Mengetahui Alamat IP Server
 Di laptop yang berperan sebagai server, buka Command Prompt atau Terminal dan ketik:
