@@ -24,28 +24,28 @@
                 <li>
                     <a href="?page=attendance" class="waves-effect">
                         <i class="dripicons-to-do"></i>
-                        <span>Data Attendance</span>
+                        <span>Data Absensi</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="?page=students" class="waves-effect">
                         <i class="dripicons-to-do"></i>
-                        <span>Data Students</span>
+                        <span>Data Siswa</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="?page=activities" class="waves-effect">
                         <i class="dripicons-to-do"></i>
-                        <span>Data Activities</span>
+                        <span>Data Kegiatan</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="?page=registrations" class="waves-effect">
                         <i class="dripicons-to-do"></i>
-                        <span>Data Registrations</span>
+                        <span>Data Pendaftaran</span>
                     </a>
                 </li>
 
