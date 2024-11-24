@@ -33,7 +33,8 @@ Jika laptop client mengalami masalah akses ke server, periksa pengaturan firewal
 Untuk pengujian awal, Anda bisa mematikan firewall sementara, lalu cek apakah client bisa terhubung ke server.
 
 ## Struktur Database
-![Uploading image.png…]()
+![data](https://github.com/user-attachments/assets/1023cc27-4c6e-4b4f-ad2f-2d086aaa7b6d)
+
 
 
 ## Struktur Tabel
