@@ -33,7 +33,8 @@ Jika laptop client mengalami masalah akses ke server, periksa pengaturan firewal
 Untuk pengujian awal, Anda bisa mematikan firewall sementara, lalu cek apakah client bisa terhubung ke server.
 
 ## Struktur Database
-![Untitled Diagram drawio (8)](https://github.com/user-attachments/assets/02c1537e-b1db-4ff1-a220-5dca4a35ec69)
+![Uploading image.png…]()
+
 
 ## Struktur Tabel
 ### Tabel Students: Menyimpan informasi dasar tentang siswa.
