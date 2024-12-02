@@ -36,48 +36,59 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>ID Absensi</th>
+                                        <th>ID</th>
                                         <th>Nama Siswa</th>
-                                        <th>Nama Aktivitas</th>
+                                        <th>Kegiatan</th>
                                         <th>Tanggal Absen</th>
                                         <th>Status</th>
+                                        <th>Waktu Kehadiran</th>
+                                        <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- Baris Data 1 -->
                                     <tr>
                                         <td>1</td>
                                         <td>Andi Saputra</td>
                                         <td>Futsal</td>
                                         <td>2023-10-15</td>
                                         <td>Hadir</td>
+                                        <td>09:00</td>
+                                        <td>Datang tepat waktu</td>
                                         <td>
                                             <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditAbsensi"
-                                                onclick="fillEditForm('1', 'Andi Saputra', 'Futsal', '2023-10-15', 'Hadir')">Edit</button>
+                                                onclick="fillEditForm('1', 'Andi Saputra', 'Futsal', '2023-10-15', 'Hadir', '09:00', 'Datang tepat waktu')">Edit</button>
                                             <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
+                                    <!-- Baris Data 2 -->
                                     <tr>
                                         <td>2</td>
                                         <td>Siti Aisyah</td>
                                         <td>Musik</td>
                                         <td>2023-11-01</td>
                                         <td>Izin</td>
+                                        <td>--</td>
+                                        <td>Alasan pribadi</td>
                                         <td>
                                             <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditAbsensi"
-                                                onclick="fillEditForm('2', 'Siti Aisyah', 'Musik', '2023-11-01', 'Izin')">Edit</button>
+                                                onclick="fillEditForm('2', 'Siti Aisyah', 'Musik', '2023-11-01', 'Izin', '', 'Alasan pribadi')">Edit</button>
                                             <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
+                                    <!-- Baris Data 3 -->
                                     <tr>
                                         <td>3</td>
                                         <td>Budi Prasetyo</td>
                                         <td>Basket</td>
                                         <td>2023-09-20</td>
                                         <td>Bolos</td>
+                                        <td>--</td>
+                                        <td>--</td>
                                         <td>
                                             <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditAbsensi"
-                                                onclick="fillEditForm('3', 'Budi Prasetyo', 'Basket', '2023-09-20', 'Bolos')">Edit</button>
+                                                onclick="fillEditForm('3', 'Budi Prasetyo', 'Basket', '2023-09-20', 'Bolos', '', '')">Edit</button>
                                             <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
@@ -153,6 +164,24 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Kolom Waktu Kehadiran -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="check_in_time" class="form-label">Waktu Kehadiran</label>
+                                <input type="time" class="form-control" id="check_in_time" name="check_in_time" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Kolom Keterangan -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="notes" class="form-label">Keterangan</label>
+                                <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary waves-effect waves-light w-100">Tambahkan Absensi</button>
@@ -224,6 +253,24 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Kolom Waktu Kehadiran -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="edit_check_in_time" class="form-label">Waktu Kehadiran</label>
+                                <input type="time" class="form-control" id="edit_check_in_time" name="check_in_time" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Kolom Keterangan -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="edit_notes" class="form-label">Keterangan</label>
+                                <textarea class="form-control" id="edit_notes" name="notes" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary waves-effect waves-light w-100">Simpan Perubahan</button>
@@ -235,10 +282,13 @@
 
 <script>
     // Function to fill edit form with existing data
-    function fillEditForm(id, nama_siswa, nama_aktivitas, tanggal_absen, status_absen) {
+    function fillEditForm(id, nama_siswa, nama_aktivitas, tanggal_absen, status_absen, check_in_time, notes) {
+        // Set hidden ID field and other fields
         document.getElementById('edit_id_absen').value = id;
         document.getElementById('edit_tanggal_absen').value = tanggal_absen;
         document.getElementById('edit_status_absen').value = status_absen;
+        document.getElementById('edit_check_in_time').value = check_in_time; // Add check_in_time
+        document.getElementById('edit_notes').value = notes; // Add notes
 
         // Fetch and set Nama Siswa
         const siswaData = {

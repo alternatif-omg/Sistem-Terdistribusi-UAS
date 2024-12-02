@@ -36,48 +36,59 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>ID Pendaftaran</th>
+                                        <th>ID</th>
                                         <th>Nama Siswa</th>
-                                        <th>Nama Aktivitas</th>
+                                        <th>Kegiatan</th>
                                         <th>Tanggal Pendaftaran</th>
                                         <th>Jabatan</th>
+                                        <th>Biaya Pendaftaran</th>
+                                        <th>Status Konfirmasi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- Baris Data 1 -->
                                     <tr>
                                         <td>1</td>
                                         <td>Andi Saputra</td>
                                         <td>Futsal</td>
                                         <td>2023-10-15</td>
                                         <td>Ketua</td>
+                                        <td>Rp 100,000</td> 
+                                        <td>Berhasil</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditPendaftaran"
-                                                onclick="fillEditForm('1', 'Andi Saputra', 'Futsal', '2023-10-15', 'Ketua')">Edit</button>
+                                                onclick="fillEditForm('1', 'Andi Saputra', 'Futsal', '2023-10-15', 'Ketua', '100000', 'berhasil')">Edit</button>
                                             <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
+                                    <!-- Baris Data 2 -->
                                     <tr>
                                         <td>2</td>
                                         <td>Siti Aisyah</td>
                                         <td>Musik</td>
                                         <td>2023-11-01</td>
                                         <td>Anggota</td>
+                                        <td>Rp 75,000</td> 
+                                        <td>Tertunda</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditPendaftaran"
-                                                onclick="fillEditForm('2', 'Siti Aisyah', 'Musik', '2023-11-01', 'Anggota')">Edit</button>
+                                                onclick="fillEditForm('2', 'Siti Aisyah', 'Musik', '2023-11-01', 'Anggota', '75000', 'tertunda')">Edit</button>
                                             <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
+                                    <!-- Baris Data 3 -->
                                     <tr>
                                         <td>3</td>
                                         <td>Budi Prasetyo</td>
                                         <td>Basket</td>
                                         <td>2023-09-20</td>
                                         <td>Wakil Ketua</td>
+                                        <td>Rp 120,000</td> 
+                                        <td>Berhasil</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditPendaftaran"
-                                                onclick="fillEditForm('3', 'Budi Prasetyo', 'Basket', '2023-09-20', 'Wakil Ketua')">Edit</button>
+                                                onclick="fillEditForm('3', 'Budi Prasetyo', 'Basket', '2023-09-20', 'Wakil Ketua', '120000', 'berhasil')">Edit</button>
                                             <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
@@ -103,6 +114,7 @@
             <form class="needs-validation" action="" method="post" novalidate>
                 <div class="modal-body">
                     <div class="row">
+                        <!-- Kolom ID Siswa dan Nama Siswa -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_siswa" class="form-label">ID Siswa</label>
@@ -118,6 +130,7 @@
                                 <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" placeholder="Nama Siswa" disabled>
                             </div>
                         </div>
+                        <!-- Kolom ID Aktivitas dan Nama Aktivitas -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_aktivitas" class="form-label">ID Aktivitas</label>
@@ -135,12 +148,14 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- Kolom Tanggal Pendaftaran -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="tanggal_pendaftaran" class="form-label">Tanggal Pendaftaran</label>
                                 <input class="form-control" type="date" id="tanggal_pendaftaran" name="tanggal_pendaftaran" required>
                             </div>
                         </div>
+                        <!-- Kolom Jabatan -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="jabatan" class="form-label">Jabatan</label>
@@ -149,6 +164,26 @@
                                     <option value="Anggota">Anggota</option>
                                     <option value="Wakil Ketua">Wakil Ketua</option>
                                     <option value="Ketua">Ketua</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Kolom Biaya Pendaftaran -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="registration_fee" class="form-label">Biaya Pendaftaran</label>
+                                <input type="number" class="form-control" id="registration_fee" name="registration_fee" placeholder="Biaya Pendaftaran" required>
+                            </div>
+                        </div>
+                        <!-- Kolom Status Konfirmasi -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="confirmation_status" class="form-label">Status Konfirmasi</label>
+                                <select class="form-select" id="confirmation_status" name="confirmation_status" required>
+                                    <option value="" selected disabled>Pilih Status Konfirmasi</option>
+                                    <option value="berhasil">Berhasil</option>
+                                    <option value="tertunda">Tertunda</option>
                                 </select>
                             </div>
                         </div>
@@ -162,6 +197,7 @@
     </div>
 </div>
 
+
 <!-- Modal Edit Pendaftaran -->
 <div class="modal fade" id="modalEditPendaftaran" tabindex="-1" role="dialog" aria-labelledby="modalEditPendaftaranLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -173,6 +209,7 @@
             <form class="needs-validation" action="" method="post" novalidate>
                 <div class="modal-body">
                     <div class="row">
+                        <!-- Kolom ID Siswa dan Nama Siswa -->
                         <input type="hidden" id="edit_id_pendaftaran" name="id_pendaftaran">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -189,6 +226,7 @@
                                 <input type="text" class="form-control" id="edit_nama_siswa" name="nama_siswa" placeholder="Nama Siswa" disabled>
                             </div>
                         </div>
+                        <!-- Kolom ID Aktivitas dan Nama Aktivitas -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="edit_id_aktivitas" class="form-label">ID Aktivitas</label>
@@ -206,12 +244,14 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- Kolom Tanggal Pendaftaran -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="edit_tanggal_pendaftaran" class="form-label">Tanggal Pendaftaran</label>
                                 <input class="form-control" type="date" id="edit_tanggal_pendaftaran" name="tanggal_pendaftaran" required>
                             </div>
                         </div>
+                        <!-- Kolom Jabatan -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="edit_jabatan" class="form-label">Jabatan</label>
@@ -220,6 +260,26 @@
                                     <option value="Anggota">Anggota</option>
                                     <option value="Wakil Ketua">Wakil Ketua</option>
                                     <option value="Ketua">Ketua</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Kolom Biaya Pendaftaran -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="edit_registration_fee" class="form-label">Biaya Pendaftaran</label>
+                                <input type="number" class="form-control" id="edit_registration_fee" name="registration_fee" placeholder="Biaya Pendaftaran" required>
+                            </div>
+                        </div>
+                        <!-- Kolom Status Konfirmasi -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="edit_confirmation_status" class="form-label">Status Konfirmasi</label>
+                                <select class="form-select" id="edit_confirmation_status" name="confirmation_status" required>
+                                    <option value="" selected disabled>Pilih Status Konfirmasi</option>
+                                    <option value="berhasil">Berhasil</option>
+                                    <option value="tertunda">Tertunda</option>
                                 </select>
                             </div>
                         </div>
@@ -233,15 +293,27 @@
     </div>
 </div>
 
+
 <script>
-    function fillEditForm(id, nama_siswa, nama_aktivitas, tanggal_pendaftaran, jabatan) {
+    function fillEditForm(id, nama_siswa, nama_aktivitas, tanggal_pendaftaran, jabatan, registration_fee, confirmation_status) {
         document.getElementById('edit_id_pendaftaran').value = id;
         document.getElementById('edit_tanggal_pendaftaran').value = tanggal_pendaftaran;
         document.getElementById('edit_jabatan').value = jabatan;
+        document.getElementById('edit_registration_fee').value = registration_fee;
+        document.getElementById('edit_confirmation_status').value = confirmation_status;
 
-        const siswaData = { 1: "Andi Saputra", 2: "Siti Aisyah", 3: "Budi Prasetyo" };
-        const aktivitasData = { 101: "Futsal", 102: "Musik", 103: "Basket" };
+        const siswaData = {
+            1: "Andi Saputra",
+            2: "Siti Aisyah",
+            3: "Budi Prasetyo"
+        };
+        const aktivitasData = {
+            101: "Futsal",
+            102: "Musik",
+            103: "Basket"
+        };
 
+        // Mencari ID siswa dan aktivitas berdasarkan nama
         const idSiswa = Object.keys(siswaData).find(key => siswaData[key] === nama_siswa);
         const idAktivitas = Object.keys(aktivitasData).find(key => aktivitasData[key] === nama_aktivitas);
 
@@ -257,22 +329,38 @@
     }
 
     function fetchNamaSiswa(id) {
-        const siswaData = { 1: "Andi Saputra", 2: "Siti Aisyah", 3: "Budi Prasetyo" };
+        const siswaData = {
+            1: "Andi Saputra",
+            2: "Siti Aisyah",
+            3: "Budi Prasetyo"
+        };
         document.getElementById('nama_siswa').value = siswaData[id] || "";
     }
 
     function fetchNamaAktivitas(id) {
-        const aktivitasData = { 101: "Futsal", 102: "Musik", 103: "Basket" };
+        const aktivitasData = {
+            101: "Futsal",
+            102: "Musik",
+            103: "Basket"
+        };
         document.getElementById('nama_aktivitas').value = aktivitasData[id] || "";
     }
 
     function fetchNamaSiswaEdit(id) {
-        const siswaData = { 1: "Andi Saputra", 2: "Siti Aisyah", 3: "Budi Prasetyo" };
+        const siswaData = {
+            1: "Andi Saputra",
+            2: "Siti Aisyah",
+            3: "Budi Prasetyo"
+        };
         document.getElementById('edit_nama_siswa').value = siswaData[id] || "";
     }
 
     function fetchNamaAktivitasEdit(id) {
-        const aktivitasData = { 101: "Futsal", 102: "Musik", 103: "Basket" };
+        const aktivitasData = {
+            101: "Futsal",
+            102: "Musik",
+            103: "Basket"
+        };
         document.getElementById('edit_nama_aktivitas').value = aktivitasData[id] || "";
     }
 </script>

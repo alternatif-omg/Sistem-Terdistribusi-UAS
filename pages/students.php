@@ -71,7 +71,7 @@
                                             <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>3</td>
                                         <td>Budi Prasetyo</td>
                                         <td>10-C</td>
@@ -91,7 +91,7 @@
                                         <td>11-C</td>
                                         <td>081678901234</td>
                                         <td>2004-01-15</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

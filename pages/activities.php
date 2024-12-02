@@ -50,7 +50,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Futsal</td>
-                                        <td>Kegiatan olahraga futsal untuk meningkatkan kebugaran fisik</td>
+                                        <td>Kegiatan olahraga futsal</td>
                                         <td>Senin, 16:00-18:00</td>
                                         <td>Pak Budi</td>
                                         <td>
@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>2</td>
                                         <td>Musik</td>
-                                        <td>Belajar memainkan alat musik dan bermusik bersama</td>
+                                        <td>Belajar memainkan alat musik dan bermusik</td>
                                         <td>Rabu, 14:00-16:00</td>
                                         <td>Bu Rina</td>
                                         <td>
@@ -71,13 +71,13 @@
                                             <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>3</td>
                                         <td>Basket</td>
                                         <td>Kegiatan olahraga basket untuk kompetisi sekolah</td>
                                         <td>Jumat, 15:00-17:00</td>
                                         <td>Pak Anwar</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
