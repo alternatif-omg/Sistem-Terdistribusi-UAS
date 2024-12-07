@@ -47,30 +47,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="students-tbody">
-                                    <!-- <tr>
-                                        <td>1</td>
-                                        <td>Andi Saputra</td>
-                                        <td>10-A</td>
-                                        <td>081234567890</td>
-                                        <td>2005-03-15</td>
-                                        <td>
-                                            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditData"
-                                                onclick="fillEditForm('1', 'Andi Saputra', '10-A', '081234567890', '2005-03-15')">Edit</button>
-                                            <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Siti Aisyah</td>
-                                        <td>11-B</td>
-                                        <td>081345678901</td>
-                                        <td>2004-07-22</td>
-                                        <td>
-                                            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditData"
-                                                onclick="fillEditForm('2', 'Siti Aisyah', '11-B', '081345678901', '2004-07-22')">Edit</button>
-                                            <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
-                                        </td>
-                                    </tr> -->
+                                    
                                 </tbody>
                             </table>
                         </div>

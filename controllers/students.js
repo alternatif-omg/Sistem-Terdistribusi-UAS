@@ -135,9 +135,11 @@ function addStudent() {
         return;
     }
 
+    const generateRandomId = () => Math.floor(100000 + Math.random() * 199999).toString();
+
     // Data yang akan dikirim
     const data = {
-        student_id: Date.now().toString(), // Menggunakan timestamp sebagai ID sementara
+        student_id: generateRandomId(), 
         name: name,
         class: studentClass,
         contact: contact,

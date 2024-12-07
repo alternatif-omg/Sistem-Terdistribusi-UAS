@@ -47,37 +47,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Futsal</td>
-                                        <td>Kegiatan olahraga futsal</td>
-                                        <td>Senin, 16:00-18:00</td>
-                                        <td>Pak Budi</td>
-                                        <td>
-                                            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditKegiatan"
-                                                onclick="fillEditForm('1', 'Futsal', 'Kegiatan olahraga futsal untuk meningkatkan kebugaran fisik', 'Senin, 16:00-18:00', 'Pak Budi')">Edit</button>
-                                            <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Musik</td>
-                                        <td>Belajar memainkan alat musik dan bermusik</td>
-                                        <td>Rabu, 14:00-16:00</td>
-                                        <td>Bu Rina</td>
-                                        <td>
-                                            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditKegiatan"
-                                                onclick="fillEditForm('2', 'Musik', 'Belajar memainkan alat musik dan bermusik bersama', 'Rabu, 14:00-16:00', 'Bu Rina')">Edit</button>
-                                            <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
-                                        </td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <td>3</td>
-                                        <td>Basket</td>
-                                        <td>Kegiatan olahraga basket untuk kompetisi sekolah</td>
-                                        <td>Jumat, 15:00-17:00</td>
-                                        <td>Pak Anwar</td>
-                                    </tr> -->
+
                                 </tbody>
                             </table>
                         </div>
@@ -169,7 +139,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light w-100">Tambahkan Kegiatan</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light w-100" onclick="addActivity()">Tambahkan Kegiatan</button>
                 </div>
             </form>
         </div>
@@ -249,51 +219,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light w-100">Simpan Perubahan</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light w-100" onclick="updateActivity()">Simpan Perubahan</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    function fillEditForm(id, nama, deskripsi, jadwal, instruktur) {
-        // Set ID, Nama Kegiatan, Deskripsi, dan Instruktur
-        document.getElementById('edit_id_kegiatan').value = id;
-        document.getElementById('edit_nama_kegiatan').value = nama;
-        document.getElementById('edit_deskripsi_kegiatan').value = deskripsi;
-        document.getElementById('edit_instruktur_kegiatan').value = instruktur;
-
-        // Pisahkan jadwal ke dalam Hari, Jam Mulai, dan Jam Berakhir
-        const [hari, jamRange] = jadwal.split(', '); // Contoh: "Senin, 16:00-18:00"
-        const [jamMulai, jamBerakhir] = jamRange.split('-'); // Contoh: "16:00-18:00"
-
-        // Set input Hari, Jam Mulai, dan Jam Berakhir
-        document.getElementById('edit_jadwal_hari').value = hari;
-        document.getElementById('edit_jadwal_mulai').value = jamMulai;
-        document.getElementById('edit_jadwal_berakhir').value = jamBerakhir;
-
-        // Update field Jadwal secara otomatis
-        generateEditJadwal();
-    }
-
-    function generateJadwal() {
-        const hari = document.getElementById('jadwal_hari').value;
-        const mulai = document.getElementById('jadwal_mulai').value;
-        const berakhir = document.getElementById('jadwal_berakhir').value;
-
-        if (hari && mulai && berakhir) {
-            document.getElementById('jadwal_kegiatan').value = `${hari}, ${mulai}-${berakhir}`;
-        }
-    }
-
-    function generateEditJadwal() {
-        const hari = document.getElementById('edit_jadwal_hari').value;
-        const mulai = document.getElementById('edit_jadwal_mulai').value;
-        const berakhir = document.getElementById('edit_jadwal_berakhir').value;
-
-        if (hari && mulai && berakhir) {
-            document.getElementById('edit_jadwal_kegiatan').value = `${hari}, ${mulai}-${berakhir}`;
-        }
-    }
-</script>
