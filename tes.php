@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,31 +10,40 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         table {
             border-collapse: collapse;
             width: 100%;
             margin-bottom: 20px;
         }
-        table th, table td {
+
+        table th,
+        table td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         table th {
             background-color: #f4f4f4;
         }
+
         form {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin: 10px 0 5px;
         }
-        input, select {
+
+        input,
+        select {
             padding: 5px;
             width: 100%;
             max-width: 400px;
         }
+
         button {
             padding: 10px 15px;
             background-color: #4CAF50;
@@ -42,11 +52,13 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
         button.delete {
             background-color: #f44336;
         }
     </style>
 </head>
+
 <body>
     <h1>CRUD Management</h1>
     <nav>
@@ -67,7 +79,9 @@
         function loadData(table) {
             currentTable = table;
             document.getElementById('section-title').innerText = `Manage ${capitalize(table)}`;
-            fetch(`server.php?type=${table}`, { method: 'GET' })
+            fetch(`server.php?type=${table}`, {
+                    method: 'GET'
+                })
                 .then(response => response.json())
                 .then(data => renderTable(data))
                 .catch(error => console.error('Error loading data:', error));
@@ -113,9 +127,9 @@
 
         // Render form dynamically based on the table
         async function renderForm() {
-    const formContainer = document.getElementById('form-container');
-    console.log('Rendering form for current table:', currentTable);
-    formContainer.innerHTML = `
+            const formContainer = document.getElementById('form-container');
+            console.log('Rendering form for current table:', currentTable);
+            formContainer.innerHTML = `
         <h3>Add or Update ${capitalize(currentTable)}</h3>
         <form onsubmit="submitData(event)">
             <input type="hidden" id="id">
@@ -124,14 +138,14 @@
         </form>
     `;
 
-    const studentDropdown = document.getElementById('student_id');
-    console.log('Student dropdown:', studentDropdown);
+            const studentDropdown = document.getElementById('student_id');
+            console.log('Student dropdown:', studentDropdown);
 
-    if (studentDropdown) {
-        console.log('Populating student dropdown...');
-        await populateDropdown('students', 'student_id');
-    }
-}
+            if (studentDropdown) {
+                console.log('Populating student dropdown...');
+                await populateDropdown('students', 'student_id');
+            }
+        }
 
 
         // Generate form fields dynamically
@@ -193,40 +207,40 @@
                     return '';
             }
         }
-      
+
         async function getOptions(table) {
-  try {
-    console.log(`Fetching options for table: ${table}`);
-    
-    const response = await fetch(`server.php?type=${table}`);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data for ${table}`);
-    }
+            try {
+                console.log(`Fetching options for table: ${table}`);
 
-    const data = await response.json();
-    console.log(`Data fetched for ${table}:`, data);
+                const response = await fetch(`server.php?type=${table}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data for ${table}`);
+                }
 
-    let options = `<option value="">-- Select --</option>`;
-    data.forEach((row) => {
-      console.log(`Processing row:`, row);
-      options += `<option value="${row.student_id}">${row.name}</option>`;
-    });
+                const data = await response.json();
+                console.log(`Data fetched for ${table}:`, data);
 
-    console.log(`Generated options for ${table}:`, options);
+                let options = `<option value="">-- Select --</option>`;
+                data.forEach((row) => {
+                    console.log(`Processing row:`, row);
+                    options += `<option value="${row.student_id}">${row.name}</option>`;
+                });
 
-    const dropdown = document.getElementById(`${table}_id`);
-    if (!dropdown) {
-      console.error(`Dropdown with ID ${table}_id not found!`);
-      return;
-    }
+                console.log(`Generated options for ${table}:`, options);
 
-    console.log(`Populating dropdown ${table}_id with data from ${table}`);
-    dropdown.innerHTML = options;
-    console.log(`Dropdown ${table}_id populated with options:`, dropdown.innerHTML);
-  } catch (error) {
-    console.error(`Error fetching options for ${table}:`, error.message);
-  }
-}
+                const dropdown = document.getElementById(`${table}_id`);
+                if (!dropdown) {
+                    console.error(`Dropdown with ID ${table}_id not found!`);
+                    return;
+                }
+
+                console.log(`Populating dropdown ${table}_id with data from ${table}`);
+                dropdown.innerHTML = options;
+                console.log(`Dropdown ${table}_id populated with options:`, dropdown.innerHTML);
+            } catch (error) {
+                console.error(`Error fetching options for ${table}:`, error.message);
+            }
+        }
 
 
 
@@ -240,10 +254,12 @@
             const data = Object.fromEntries(formData.entries());
 
             fetch(endpoint, {
-                method: method,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
                 .then(response => response.json())
                 .then(() => loadData(currentTable))
                 .catch(error => console.error('Error saving data:', error));
@@ -251,7 +267,9 @@
 
         // Edit data
         function editData(id) {
-            fetch(`server.php?type=${currentTable}&id=${id}`, { method: 'GET' })
+            fetch(`server.php?type=${currentTable}&id=${id}`, {
+                    method: 'GET'
+                })
                 .then(response => response.json())
                 .then(data => {
                     Object.keys(data).forEach(key => {
@@ -266,7 +284,9 @@
         // Delete data
         function deleteData(id) {
             if (!confirm('Are you sure you want to delete this record?')) return;
-            fetch(`server.php?type=${currentTable}&id=${id}`, { method: 'DELETE' })
+            fetch(`server.php?type=${currentTable}&id=${id}`, {
+                    method: 'DELETE'
+                })
                 .then(() => loadData(currentTable))
                 .catch(error => console.error('Error deleting data:', error));
         }
@@ -277,4 +297,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -61,7 +61,8 @@ switch ($requestMethod) {
 }
 
 // --- CRUD for Students ---
-function getStudents() {
+function getStudents()
+{
     $db = getConnection();
     $sql = "SELECT * FROM students";
     $stmt = $db->prepare($sql);
@@ -70,7 +71,8 @@ function getStudents() {
     echo json_encode($students);
 }
 
-function createStudent() {
+function createStudent()
+{
     $data = json_decode(file_get_contents('php://input'), true);
     if (empty($data['student_id']) || empty($data['name']) || empty($data['class']) || empty($data['contact']) || empty($data['birth_date'])) {
         header("HTTP/1.1 400 Bad Request");
@@ -90,7 +92,8 @@ function createStudent() {
     }
 }
 
-function updateStudent() {
+function updateStudent()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Student ID is required"]);
@@ -116,7 +119,8 @@ function updateStudent() {
     }
 }
 
-function deleteStudent() {
+function deleteStudent()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Student ID is required"]);
@@ -136,7 +140,8 @@ function deleteStudent() {
 }
 
 // --- CRUD for Registrations ---
-function getRegistrations() {
+function getRegistrations()
+{
     $db = getConnection();
     $sql = "SELECT registrations.*, 
                    students.name AS student_name, 
@@ -150,30 +155,35 @@ function getRegistrations() {
     echo json_encode($registrations);
 }
 
-function createRegistration() {
+function createRegistration()
+{
     $data = json_decode(file_get_contents('php://input'), true);
-    if (empty($data['student_id']) || 
-        empty($data['activity_id']) || 
-        empty($data['registration_date']) || 
-        empty($data['position']) || 
-        !isset($data['registration_fee']) || 
-        empty($data['confirmation_status'])) {
+    if (
+        empty($data['registration_id']) ||
+        empty($data['student_id']) ||
+        empty($data['activity_id']) ||
+        empty($data['registration_date']) ||
+        empty($data['position']) ||
+        !isset($data['registration_fee']) ||
+        empty($data['confirmation_status'])
+    ) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "All fields are required"]);
         return;
     }
 
     $db = getConnection();
-    $sql = "INSERT INTO registrations (student_id, activity_id, registration_date, position, registration_fee, confirmation_status) 
-            VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO registrations (registration_id, student_id, activity_id, registration_date, position, registration_fee, confirmation_status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $db->prepare($sql);
     try {
         $stmt->execute([
-            $data['student_id'], 
-            $data['activity_id'], 
-            $data['registration_date'], 
-            $data['position'], 
-            $data['registration_fee'], 
+            $data['registration_id'],
+            $data['student_id'],
+            $data['activity_id'],
+            $data['registration_date'],
+            $data['position'],
+            $data['registration_fee'],
             $data['confirmation_status']
         ]);
         echo json_encode(["message" => "Registration created successfully"]);
@@ -183,7 +193,8 @@ function createRegistration() {
     }
 }
 
-function updateRegistration() {
+function updateRegistration()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Registration ID is required"]);
@@ -191,12 +202,14 @@ function updateRegistration() {
     }
 
     $data = json_decode(file_get_contents('php://input'), true);
-    if (empty($data['student_id']) || 
-        empty($data['activity_id']) || 
-        empty($data['registration_date']) || 
-        empty($data['position']) || 
-        !isset($data['registration_fee']) || 
-        empty($data['confirmation_status'])) {
+    if (
+        empty($data['student_id']) ||
+        empty($data['activity_id']) ||
+        empty($data['registration_date']) ||
+        empty($data['position']) ||
+        !isset($data['registration_fee']) ||
+        empty($data['confirmation_status'])
+    ) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "All fields are required"]);
         return;
@@ -214,12 +227,12 @@ function updateRegistration() {
     $stmt = $db->prepare($sql);
     try {
         $stmt->execute([
-            $data['student_id'], 
-            $data['activity_id'], 
-            $data['registration_date'], 
-            $data['position'], 
-            $data['registration_fee'], 
-            $data['confirmation_status'], 
+            $data['student_id'],
+            $data['activity_id'],
+            $data['registration_date'],
+            $data['position'],
+            $data['registration_fee'],
+            $data['confirmation_status'],
             $_GET['id']
         ]);
         echo json_encode(["message" => "Registration updated successfully"]);
@@ -229,7 +242,8 @@ function updateRegistration() {
     }
 }
 
-function deleteRegistration() {
+function deleteRegistration()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Registration ID is required"]);
@@ -250,7 +264,8 @@ function deleteRegistration() {
 
 
 // --- CRUD for Activities ---
-function getActivities() {
+function getActivities()
+{
     $db = getConnection();
     $sql = "SELECT * FROM Activities";
     $stmt = $db->prepare($sql);
@@ -259,7 +274,8 @@ function getActivities() {
     echo json_encode($activities);
 }
 
-function createActivity() {
+function createActivity()
+{
     $data = json_decode(file_get_contents('php://input'), true);
     if (empty($data['activity_id']) || empty($data['name']) || empty($data['description']) || empty($data['schedule']) || empty($data['instructor'])) {
         header("HTTP/1.1 400 Bad Request");
@@ -279,7 +295,8 @@ function createActivity() {
     }
 }
 
-function updateActivity() {
+function updateActivity()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Activity ID is required"]);
@@ -305,7 +322,8 @@ function updateActivity() {
     }
 }
 
-function deleteActivity() {
+function deleteActivity()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Activity ID is required"]);
@@ -325,7 +343,8 @@ function deleteActivity() {
 }
 
 // --- CRUD for Attendance ---
-function getAttendance() {
+function getAttendance()
+{
     $db = getConnection();
     $sql = "SELECT attendance.*, 
                    students.name AS student_name, 
@@ -339,30 +358,35 @@ function getAttendance() {
     echo json_encode($attendance);
 }
 
-function createAttendance() {
+function createAttendance()
+{
     $data = json_decode(file_get_contents('php://input'), true);
-    if (empty($data['student_id']) || 
-        empty($data['activity_id']) || 
-        empty($data['attendance_date']) || 
-        empty($data['status']) || 
-        empty($data['check_in_time']) || 
-        empty($data['notes'])) {
+    if (
+        empty($data['attendance_id']) ||
+        empty($data['student_id']) ||
+        empty($data['activity_id']) ||
+        empty($data['attendance_date']) ||
+        empty($data['status']) ||
+        empty($data['check_in_time']) ||
+        empty($data['notes'])
+    ) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "All fields are required"]);
         return;
     }
 
     $db = getConnection();
-    $sql = "INSERT INTO attendance (student_id, activity_id, attendance_date, status, check_in_time, notes) 
-            VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO attendance (attendance_id, student_id, activity_id, attendance_date, status, check_in_time, notes) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $db->prepare($sql);
     try {
         $stmt->execute([
-            $data['student_id'], 
-            $data['activity_id'], 
-            $data['attendance_date'], 
-            $data['status'], 
-            $data['check_in_time'], 
+            $data['attendance_id'],
+            $data['student_id'],
+            $data['activity_id'],
+            $data['attendance_date'],
+            $data['status'],
+            $data['check_in_time'],
             $data['notes']
         ]);
         echo json_encode(["message" => "Attendance created successfully"]);
@@ -372,7 +396,8 @@ function createAttendance() {
     }
 }
 
-function updateAttendance() {
+function updateAttendance()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Attendance ID is required"]);
@@ -380,12 +405,14 @@ function updateAttendance() {
     }
 
     $data = json_decode(file_get_contents('php://input'), true);
-    if (empty($data['student_id']) || 
-        empty($data['activity_id']) || 
-        empty($data['attendance_date']) || 
-        empty($data['status']) || 
-        empty($data['check_in_time']) || 
-        empty($data['notes'])) {
+    if (
+        empty($data['student_id']) ||
+        empty($data['activity_id']) ||
+        empty($data['attendance_date']) ||
+        empty($data['status']) ||
+        empty($data['check_in_time']) ||
+        empty($data['notes'])
+    ) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "All fields are required"]);
         return;
@@ -403,12 +430,12 @@ function updateAttendance() {
     $stmt = $db->prepare($sql);
     try {
         $stmt->execute([
-            $data['student_id'], 
-            $data['activity_id'], 
-            $data['attendance_date'], 
-            $data['status'], 
-            $data['check_in_time'], 
-            $data['notes'], 
+            $data['student_id'],
+            $data['activity_id'],
+            $data['attendance_date'],
+            $data['status'],
+            $data['check_in_time'],
+            $data['notes'],
             $_GET['id']
         ]);
         echo json_encode(["message" => "Attendance updated successfully"]);
@@ -418,7 +445,8 @@ function updateAttendance() {
     }
 }
 
-function deleteAttendance() {
+function deleteAttendance()
+{
     if (!isset($_GET['id'])) {
         header("HTTP/1.1 400 Bad Request");
         echo json_encode(["message" => "Attendance ID is required"]);
@@ -436,4 +464,3 @@ function deleteAttendance() {
         echo json_encode(["message" => $e->getMessage()]);
     }
 }
-
