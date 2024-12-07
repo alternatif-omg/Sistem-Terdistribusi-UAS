@@ -6,14 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
 function loadStudents() {
     fetch(`${CONFIG.BASE_URL}server.php?type=students`)
         .then(response => {
-            console.log('Response:', response);
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
             return response.json();
         })
         .then(data => {
-            console.log('Data:', data);
+            // Hancurkan DataTables jika sudah diinisialisasi
+            if ($.fn.DataTable.isDataTable('#datatable')) {
+                $('#datatable').DataTable().destroy();
+            }
+
             const tbody = document.getElementById('students-tbody');
             tbody.innerHTML = ''; // Kosongkan konten tabel
 
@@ -33,6 +36,12 @@ function loadStudents() {
                     </td>
                 `;
                 tbody.appendChild(row);
+            });
+
+            // Inisialisasi ulang DataTables
+            $('#datatable').DataTable({
+                responsive: true,
+                autoWidth: false,
             });
         })
         .catch(error => {
@@ -139,7 +148,7 @@ function addStudent() {
 
     // Data yang akan dikirim
     const data = {
-        student_id: generateRandomId(), 
+        student_id: generateRandomId(),
         name: name,
         class: studentClass,
         contact: contact,

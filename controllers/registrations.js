@@ -17,6 +17,11 @@ function loadRegistrations() {
             return response.json();
         })
         .then((data) => {
+            // Hancurkan DataTables jika sudah diinisialisasi
+            if ($.fn.DataTable.isDataTable('#datatable')) {
+                $('#datatable').DataTable().destroy();
+            }
+
             const tbody = document.getElementById("datatable").querySelector("tbody");
             tbody.innerHTML = ""; // Kosongkan isi tabel sebelum memuat data baru
 
@@ -37,6 +42,12 @@ function loadRegistrations() {
                     </td>
                 `;
                 tbody.appendChild(row);
+            });
+
+            // Inisialisasi ulang DataTables
+            $('#datatable').DataTable({
+                responsive: true,
+                autoWidth: false,
             });
         })
         .catch((error) => {
