@@ -46,8 +46,8 @@
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody id="students-tbody">
+                                    <!-- <tr>
                                         <td>1</td>
                                         <td>Andi Saputra</td>
                                         <td>10-A</td>
@@ -70,27 +70,6 @@
                                                 onclick="fillEditForm('2', 'Siti Aisyah', '11-B', '081345678901', '2004-07-22')">Edit</button>
                                             <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                         </td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <td>3</td>
-                                        <td>Budi Prasetyo</td>
-                                        <td>10-C</td>
-                                        <td>081456789012</td>
-                                        <td>2005-09-10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Ani Rahmawati</td>
-                                        <td>12-A</td>
-                                        <td>081567890123</td>
-                                        <td>2003-12-05</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Joko Widodo</td>
-                                        <td>11-C</td>
-                                        <td>081678901234</td>
-                                        <td>2004-01-15</td>
                                     </tr> -->
                                 </tbody>
                             </table>
@@ -156,12 +135,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light w-100">Tambahkan Data</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light w-100" onclick="addStudent()">Tambahkan Data</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div>
 
 <!-- Modal Edit -->
 <div class="modal fade" id="modalEditData" tabindex="-1" role="dialog" aria-labelledby="modalEditDataLabel" aria-hidden="true">
@@ -216,19 +195,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light w-100">Simpan Perubahan</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light w-100" onclick="editStudent()">Simpan Perubahan</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    function fillEditForm(id, nama, kelas, kontak, tgl_lahir) {
-        document.getElementById('edit_id_siswa').value = id;
-        document.getElementById('edit_nama_siswa').value = nama;
-        document.getElementById('edit_kelas').value = kelas;
-        document.getElementById('edit_kontak').value = kontak;
-        document.getElementById('edit_tgl_lahir').value = tgl_lahir;
-    }
-</script>

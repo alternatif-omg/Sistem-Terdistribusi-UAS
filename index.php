@@ -4,12 +4,16 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'attendance';
 // Tentukan konten berdasarkan parameter
 if ($page === 'attendance') {
     $contentFile = 'pages/attendance.php';
+    $jsFile = 'controllers/attendance.js';
 } elseif ($page === 'students') {
     $contentFile = 'pages/students.php';
+    $jsFile = 'controllers/students.js';
 } elseif ($page === 'activities') {
     $contentFile = 'pages/activities.php';
+    $jsFile = 'controllers/activities.js';
 } elseif ($page === 'registrations') {
     $contentFile = 'pages/registrations.php';
+    $jsFile = 'controllers/registrations.js';
 } else {
     // Jika halaman tidak ditemukan, tampilkan 404
     $contentFile = 'pages/404.php';
@@ -59,7 +63,10 @@ if ($page === 'attendance') {
         <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
+
     <!-- JAVASCRIPT -->
+    <script src="controllers/config.js"></script>
+    <script src="<?= $jsFile ?>"></script>
     <script src="assets/libs/jquery/jquery.min.js"></script>
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/metismenu/metisMenu.min.js"></script>
