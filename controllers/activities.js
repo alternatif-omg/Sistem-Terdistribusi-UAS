@@ -1,4 +1,4 @@
-// Panggil loadStudents saat halaman dimuat
+// Panggil loadActivities saat halaman dimuat
 document.addEventListener("DOMContentLoaded", () => {
     loadActivities();
 });
@@ -84,7 +84,7 @@ function addActivity() {
         return;
     }
 
-    const generateRandomId = () => Math.floor(200000 + Math.random() * 300000).toString();
+    const generateRandomId = () => Math.floor(200000 + Math.random() * 299999).toString();
 
     // Data yang akan dikirim
     const activityData = {
